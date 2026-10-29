@@ -1,117 +1,1000 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Layla & Youssef — Wedding Invitation</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --ivory: #f8f3e9;
-      --paper: #fffdf8;
-      --burgundy: #661f2a;
-      --ink: #302522;
-      --gold: #aa803d;
-      --serif: "Cormorant Garamond", Georgia, serif;
-      --sans: "DM Sans", Arial, sans-serif;
-    }
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; background: var(--ivory); }
-    body { margin: 0; color: var(--ink); background: var(--ivory); font-family: var(--sans); font-size: 18px; line-height: 1.6; }
-    
-    /* Opening Envelope */
-    .opening { position: fixed; inset: 0; height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; background: rgba(20, 15, 12, 0.9); z-index: 9999; transition: opacity 1s ease; }
-    .opening.opened { opacity: 0; visibility: hidden; pointer-events: none; }
-    .envelope-wrapper { text-align: center; cursor: pointer; }
-    .wax-seal { width: 80px; height: 80px; background: radial-gradient(circle, #a82030, #6b0f1a); border-radius: 50%; margin: 20px auto; display: flex; align-items: center; justify-content: center; color: #fce8cc; font-size: 24px; font-family: var(--serif); box-shadow: 0 10px 20px rgba(0,0,0,0.5); animation: pulse 2s infinite; }
-    @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.08); } }
-    .click-instruction { color: #fff; text-transform: uppercase; letter-spacing: 2px; font-size: 12px; margin-top: 15px; }
 
-    /* Main Site */
-    .website { opacity: 0; transition: opacity 1s ease; }
-    .website.is-visible { opacity: 1; }
-    .hero { min-height: 100vh; display: grid; place-items: center; text-align: center; background: radial-gradient(circle, #143623, #091a10); color: #fff; padding: 40px; }
-    .hero h1 { font-family: var(--serif); font-size: clamp(50px, 8vw, 100px); margin: 20px 0; font-weight: 400; color: #f9eddb; }
-    .hero h1 em { color: #deb95b; font-style: normal; display: block; font-size: 0.6em; }
-    .section { padding: 80px 20px; max-width: 800px; margin: 0 auto; text-align: center; }
-    .countdown-timer { display: flex; justify-content: center; gap: 20px; font-family: var(--serif); font-size: 36px; color: var(--gold); margin-top: 20px; }
-    .countdown-timer div span { display: block; font-size: 12px; font-family: var(--sans); text-transform: uppercase; letter-spacing: 1px; color: #666; }
-    .button { background: var(--burgundy); color: #fff; border: none; padding: 15px 30px; text-transform: uppercase; letter-spacing: 2px; font-size: 12px; cursor: pointer; margin-top: 20px; }
-    footer { text-align: center; padding: 40px; background: #0f1c15; color: #cbb4a5; font-size: 12px; letter-spacing: 2px; }
+  <!-- Google Fonts for Elegant Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN for fluid utility layout -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    /* Custom Luxury Theme Design Tokens */
+    :root {
+      --bg-emerald-dark: #0a1812;
+      --bg-emerald-deep: #11281f;
+      --bg-emerald-medium: #19382c;
+      --gold-primary: #d4af37;
+      --gold-light: #f3e5ab;
+      --gold-dark: #aa803d;
+      --cream-bg: #fcf9f2;
+      --cream-paper: #f8f3e9;
+      --text-dark: #2c2523;
+      --text-muted: #6e645e;
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-sans: 'Montserrat', sans-serif;
+      --font-script: 'Great Vibes', cursive;
+    }
+
+    /* Base Styling */
+    body {
+      background-color: var(--cream-bg);
+      color: var(--text-dark);
+      font-family: var(--font-sans);
+      overflow-x: hidden;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+    }
+
+    .font-serif { font-family: var(--font-serif); }
+    .font-sans { font-family: var(--font-sans); }
+    .font-script { font-family: var(--font-script); }
+
+    /* Custom Metallic Gold Gradients */
+    .gold-gradient-text {
+      background: linear-gradient(135deg, #bf953f 0%, #fcf6ba 25%, #b38728 50%, #fbf5b7 75%, #aa771c 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .gold-gradient-bg {
+      background: linear-gradient(135deg, #bf953f 0%, #fcf6ba 25%, #b38728 50%, #fbf5b7 75%, #aa771c 100%);
+    }
+
+    .gold-border-gradient {
+      border-image: linear-gradient(135deg, #bf953f, #fcf6ba, #b38728, #aa771c) 1;
+    }
+
+    /* Subtle Grain Texture Overlay */
+    .grain-overlay {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 90;
+      opacity: 0.15;
+      mix-blend-mode: multiply;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    }
+
+    /* Falling Petals Background Animation */
+    .petal-container {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 2;
+      overflow: hidden;
+    }
+
+    .petal {
+      position: absolute;
+      width: 12px;
+      height: 18px;
+      background: linear-gradient(135deg, #e8c3b9, #d4af37);
+      border-radius: 80% 0 80% 0;
+      opacity: 0.4;
+      animation: floatPetal 15s linear infinite;
+      top: -20px;
+    }
+
+    @keyframes floatPetal {
+      0% {
+        transform: translateY(0) rotate(0deg) translateX(0);
+        opacity: 0;
+      }
+      10% { opacity: 0.5; }
+      90% { opacity: 0.5; }
+      100% {
+        transform: translateY(105vh) rotate(720deg) translateX(100px);
+        opacity: 0;
+      }
+    }
+
+    /* Envelope Opening Experience */
+    #opening-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      background: radial-gradient(circle at center, #19382c 0%, #0a1812 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 1.2s ease, visibility 1.2s ease;
+    }
+
+    #opening-overlay.hidden-overlay {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .envelope-container {
+      position: relative;
+      width: min(90vw, 480px);
+      height: min(60vw, 320px);
+      perspective: 1000px;
+      cursor: pointer;
+    }
+
+    .envelope-base {
+      position: absolute;
+      inset: 0;
+      background-color: #0e231b;
+      border-radius: 8px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7), 0 0 30px rgba(212, 175, 55, 0.2);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+    }
+
+    .envelope-flap-top {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 55%;
+      background: #153327;
+      clip-path: polygon(0 0, 50% 100%, 100% 0);
+      transform-origin: top;
+      transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 4;
+      border-top: 1px solid rgba(212, 175, 55, 0.4);
+    }
+
+    .envelope-flap-bottom {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 60%;
+      background: #0f271d;
+      clip-path: polygon(0 100%, 50% 0, 100% 100%);
+      z-index: 3;
+    }
+
+    .envelope-flap-left {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 55%;
+      height: 100%;
+      background: #0d2118;
+      clip-path: polygon(0 0, 100% 50%, 0 100%);
+      z-index: 3;
+    }
+
+    .envelope-flap-right {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 55%;
+      height: 100%;
+      background: #0d2118;
+      clip-path: polygon(100% 0, 0 50%, 100% 100%);
+      z-index: 3;
+    }
+
+    .wax-seal {
+      position: absolute;
+      top: 52%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 68px;
+      height: 68px;
+      background: radial-gradient(circle at 35% 35%, #aa803d, #61461b);
+      border-radius: 50%;
+      z-index: 5;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.6), inset 0 2px 4px rgba(255,255,255,0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid #d4af37;
+      transition: transform 0.5s ease, opacity 0.5s ease;
+    }
+
+    .wax-seal:hover {
+      transform: translate(-50%, -50%) scale(1.08);
+    }
+
+    .invitation-card-preview {
+      position: absolute;
+      inset: 5%;
+      background: var(--cream-paper);
+      border-radius: 4px;
+      z-index: 2;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      text-align: center;
+      transition: transform 1s cubic-bezier(0.25, 1, 0.5, 1);
+      border: 1px solid var(--gold-primary);
+    }
+
+    /* Envelope Opened Animations */
+    .envelope-container.open .envelope-flap-top {
+      transform: rotateX(180deg);
+      z-index: 1;
+    }
+
+    .envelope-container.open .wax-seal {
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(1.4);
+      pointer-events: none;
+    }
+
+    .envelope-container.pull-card .invitation-card-preview {
+      transform: translateY(-80%);
+      z-index: 6;
+    }
+
+    .envelope-container.read-card .invitation-card-preview {
+      transform: translateY(-10%) scale(1.15);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    }
+
+    /* Custom Canvas Drawing Controls */
+    canvas#guestbookCanvas {
+      touch-action: none;
+      cursor: crosshair;
+    }
+
+    /* Scroll Animations */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
   </style>
 </head>
-<body>
+<body class="relative min-h-screen text-gray-800">
 
-  <!-- OPENING ENVELOPE OVERLAY -->
-  <section class="opening" id="opening">
-    <div class="envelope-wrapper" id="openTrigger">
-      <p style="color: #dfc89c; text-transform: uppercase; letter-spacing: 3px; font-size: 11px;">A Celebration of Love</p>
-      <h2 style="color: #fff; font-family: var(--serif); font-size: 40px; margin: 10px 0;">Layla & Youssef</h2>
-      <div class="wax-seal">L&Y</div>
-      <p class="click-instruction">Tap the seal to open your invitation</p>
+  <!-- Grain Ambient Effect -->
+  <div class="grain-overlay" aria-hidden="true"></div>
+
+  <!-- Falling Petals Background Effect -->
+  <div class="petal-container" aria-hidden="true" id="petalContainer"></div>
+
+  <!-- FULLSCREEN ENVELOPE OPENING EXPERIENCE -->
+  <div id="opening-overlay" aria-label="Wedding Envelope Opening Overlay">
+    <p class="text-xs uppercase tracking-[0.3em] gold-gradient-text mb-8 font-medium">You Are Cordially Invited</p>
+    
+    <div class="envelope-container" id="envelopeContainer" title="Click wax seal to open invitation">
+      <div class="envelope-base"></div>
+      
+      <!-- Card Inside Envelope -->
+      <div class="invitation-card-preview" id="invitationCardPreview">
+        <div class="border border-amber-600/30 w-full h-full p-4 flex flex-col justify-center items-center">
+          <p class="font-script text-3xl text-amber-900 mb-1">Layla & Youssef</p>
+          <p class="text-[10px] uppercase tracking-widest text-amber-800/70 mb-2">Are getting married</p>
+          <p class="font-serif text-sm text-gray-700">October 24, 2026</p>
+        </div>
+      </div>
+
+      <!-- Envelope Flaps -->
+      <div class="envelope-flap-bottom"></div>
+      <div class="envelope-flap-left"></div>
+      <div class="envelope-flap-right"></div>
+      <div class="envelope-flap-top"></div>
+
+      <!-- Interactive Wax Seal -->
+      <div class="wax-seal" id="waxSeal">
+        <span class="font-script text-2xl text-amber-100 drop-shadow-md select-none">L&Y</span>
+      </div>
     </div>
-  </section>
 
-  <!-- MAIN WEBSITE -->
-  <main id="website" class="website" aria-hidden="true">
-    <section class="hero">
-      <div>
-        <p style="color: var(--gold); text-transform: uppercase; letter-spacing: 3px; font-size: 12px;">Together with their families</p>
-        <h1>Layla <em>&</em> Youssef</h1>
-        <p style="font-style: italic; font-family: var(--serif); font-size: 22px;">invite you to celebrate their wedding</p>
-        <p style="margin-top: 30px; letter-spacing: 2px;">OCTOBER 14, 2026 · THE GLASSHOUSE ESTATE, ALEXANDRIA</p>
+    <p class="text-xs uppercase tracking-widest text-amber-200/80 mt-10 animate-pulse" id="sealPrompt">
+      ✦ Tap the Wax Seal to Open ✦
+    </p>
+  </div>
+
+  <!-- MAIN WEBPAGE CONTENT -->
+  <div id="mainWebsite" class="opacity-0 transition-opacity duration-1000">
+
+    <!-- NAVIGATION BAR -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-[#0a1812]/80 backdrop-blur-md border-b border-amber-500/20 text-cream-paper px-6 py-4 flex justify-between items-center">
+      <a href="#hero" class="font-serif text-2xl gold-gradient-text tracking-wider">L & Y</a>
+      
+      <div class="hidden md:flex gap-8 text-xs uppercase tracking-widest text-amber-100/90 font-medium">
+        <a href="#story" class="hover:text-amber-400 transition">Our Story</a>
+        <a href="#details" class="hover:text-amber-400 transition">Event Details</a>
+        <a href="#gallery" class="hover:text-amber-400 transition">Gallery</a>
+        <a href="#guestbook" class="hover:text-amber-400 transition">Guestbook</a>
+        <a href="#rsvp" class="hover:text-amber-400 transition">RSVP</a>
+      </div>
+
+      <a href="#rsvp" class="px-4 py-2 border border-amber-500/50 rounded-full text-xs uppercase tracking-widest gold-gradient-text hover:bg-amber-500/10 transition">
+        RSVP Now
+      </a>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section id="hero" class="relative min-h-screen flex items-center justify-center pt-20 px-4 bg-[#0a1812] text-center overflow-hidden">
+      <!-- Background Image with Gradient Overlay -->
+      <div class="absolute inset-0 bg-cover bg-center opacity-30" style="background-image: url('https://picsum.photos/1920/1080?wedding');"></div>
+      <div class="absolute inset-0 bg-gradient-to-b from-[#0a1812]/70 via-[#0a1812]/80 to-[#0a1812]"></div>
+
+      <div class="relative z-10 max-w-4xl mx-auto py-16">
+        <p class="text-xs md:text-sm uppercase tracking-[0.35em] gold-gradient-text mb-4 font-semibold">
+          Together With Their Families
+        </p>
+        
+        <h1 class="font-serif text-6xl md:text-8xl lg:text-9xl text-amber-50 font-normal leading-none tracking-tight mb-4">
+          Layla <span class="font-script text-5xl md:text-7xl lg:text-8xl gold-gradient-text block md:inline my-2">&</span> Youssef
+        </h1>
+
+        <div class="w-24 h-[1px] gold-gradient-bg mx-auto my-6 opacity-70"></div>
+
+        <p class="font-serif italic text-lg md:text-2xl text-amber-100/90 mb-8 max-w-2xl mx-auto font-light">
+          Request the pleasure of your company as they celebrate their marriage
+        </p>
+
+        <div class="inline-block p-6 border border-amber-500/30 rounded-lg backdrop-blur-sm bg-emerald-950/40 mb-10">
+          <p class="font-serif text-2xl md:text-3xl text-amber-100 tracking-wide">Saturday, October 24, 2026</p>
+          <p class="text-xs uppercase tracking-widest text-amber-300/80 mt-1">The Glasshouse Estate • Alexandria, Egypt</p>
+        </div>
+
+        <div>
+          <a href="#rsvp" class="inline-block px-8 py-4 gold-gradient-bg text-emerald-950 font-medium rounded-full text-xs uppercase tracking-widest shadow-lg shadow-amber-500/20 hover:scale-105 transition transform">
+            Confirm Your Attendance
+          </a>
+        </div>
       </div>
     </section>
 
-    <section class="section">
-      <h2 style="font-family: var(--serif); font-size: 40px;">Counting the Moments</h2>
-      <div class="countdown-timer" id="timer">
-        <div><strong id="days">00</strong><span>Days</span></div>
-        <div><strong id="hours">00</strong><span>Hours</span></div>
-        <div><strong id="minutes">00</strong><span>Minutes</span></div>
-        <div><strong id="seconds">00</strong><span>Seconds</span></div>
+    <!-- LIVE COUNTDOWN SECTION -->
+    <section class="bg-[#11281f] text-amber-50 py-16 border-y border-amber-500/20">
+      <div class="max-w-4xl mx-auto px-4 text-center reveal">
+        <p class="text-xs uppercase tracking-[0.25em] gold-gradient-text mb-2 font-medium">Counting Down To Forever</p>
+        <h2 class="font-serif text-3xl md:text-4xl mb-10">Until We Say "I Do"</h2>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 max-w-2xl mx-auto" id="countdownTimer">
+          <div class="bg-[#0a1812]/60 p-6 rounded-xl border border-amber-500/20 backdrop-blur-sm">
+            <span class="font-serif text-4xl md:text-5xl font-bold gold-gradient-text block" id="days">00</span>
+            <span class="text-[10px] uppercase tracking-widest text-amber-200/70 mt-2 block">Days</span>
+          </div>
+          <div class="bg-[#0a1812]/60 p-6 rounded-xl border border-amber-500/20 backdrop-blur-sm">
+            <span class="font-serif text-4xl md:text-5xl font-bold gold-gradient-text block" id="hours">00</span>
+            <span class="text-[10px] uppercase tracking-widest text-amber-200/70 mt-2 block">Hours</span>
+          </div>
+          <div class="bg-[#0a1812]/60 p-6 rounded-xl border border-amber-500/20 backdrop-blur-sm">
+            <span class="font-serif text-4xl md:text-5xl font-bold gold-gradient-text block" id="minutes">00</span>
+            <span class="text-[10px] uppercase tracking-widest text-amber-200/70 mt-2 block">Minutes</span>
+          </div>
+          <div class="bg-[#0a1812]/60 p-6 rounded-xl border border-amber-500/20 backdrop-blur-sm">
+            <span class="font-serif text-4xl md:text-5xl font-bold gold-gradient-text block" id="seconds">00</span>
+            <span class="text-[10px] uppercase tracking-widest text-amber-200/70 mt-2 block">Seconds</span>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section class="section" style="background: #fff; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); margin-bottom: 80px;">
-      <h2 style="font-family: var(--serif); font-size: 40px;">Will You Join Us?</h2>
-      <p style="color: #666; margin-bottom: 20px;">Please confirm your attendance below.</p>
-      <form id="rsvpForm" onsubmit="event.preventDefault(); alert('Thank you for your RSVP! We look forward to celebrating with you.');">
-        <input type="text" placeholder="Your Full Name" required style="padding: 12px; width: 80%; max-width: 400px; margin-bottom: 15px; border: 1px solid #ccc;"><br>
-        <select style="padding: 12px; width: 80%; max-width: 400px; margin-bottom: 20px; border: 1px solid #ccc;">
-          <option>Joyfully Accept</option>
-          <option>Regretfully Decline</option>
-        </select><br>
-        <button type="button" class="button" onclick="alert('Thank you! Your response has been recorded.')">Send RSVP</button>
-      </form>
+    <!-- OUR STORY SECTION -->
+    <section id="story" class="py-24 px-4 max-w-5xl mx-auto">
+      <div class="text-center mb-16 reveal">
+        <p class="text-xs uppercase tracking-[0.25em] text-amber-700 mb-2 font-medium">How It All Began</p>
+        <h2 class="font-serif text-4xl md:text-5xl text-emerald-950">Our Love Story</h2>
+        <div class="w-16 h-[1px] bg-amber-600/40 mx-auto mt-4"></div>
+      </div>
+
+      <div class="space-y-16">
+        <!-- Story Timeline Item 1 -->
+        <div class="grid md:grid-cols-2 gap-8 items-center reveal">
+          <div class="rounded-2xl overflow-hidden shadow-xl border border-amber-900/10 h-72">
+            <img src="https://picsum.photos/800/600?random=1" alt="First Met" class="w-full h-full object-cover hover:scale-105 transition duration-700" onerror="this.src='https://placehold.co/800x600/19382c/f3e5ab?text=First+Meeting'">
+          </div>
+          <div class="md:pl-6">
+            <span class="text-xs font-semibold uppercase tracking-widest text-amber-700">Autumn 2023</span>
+            <h3 class="font-serif text-3xl text-emerald-950 my-2">The First Glance</h3>
+            <p class="text-gray-600 leading-relaxed font-light">
+              A chance encounter in a seaside library cafe turned into hours of shared laughter over espresso. What started as a simple conversation quickly revealed a deep connection neither expected.
+            </p>
+          </div>
+        </div>
+
+        <!-- Story Timeline Item 2 -->
+        <div class="grid md:grid-cols-2 gap-8 items-center md:flex-row-reverse reveal">
+          <div class="md:order-2 rounded-2xl overflow-hidden shadow-xl border border-amber-900/10 h-72">
+            <img src="https://picsum.photos/800/600?random=2" alt="The Proposal" class="w-full h-full object-cover hover:scale-105 transition duration-700" onerror="this.src='https://placehold.co/800x600/19382c/f3e5ab?text=The+Proposal'">
+          </div>
+          <div class="md:order-1 md:pr-6">
+            <span class="text-xs font-semibold uppercase tracking-widest text-amber-700">Winter 2025</span>
+            <h3 class="font-serif text-3xl text-emerald-950 my-2">The Proposal</h3>
+            <p class="text-gray-600 leading-relaxed font-light">
+              Under a canopy of coastal stars on the Mediterranean shore, Youssef popped the question. Surrounded by soft lantern glow and gentle waves, Layla said yes to forever.
+            </p>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <footer>
-      LAYLA & YOUSSEF · OCTOBER 14, 2026
+    <!-- EVENT DETAILS SECTION -->
+    <section id="details" class="bg-[#11281f] text-amber-50 py-24 px-4">
+      <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-16 reveal">
+          <p class="text-xs uppercase tracking-[0.25em] gold-gradient-text mb-2 font-medium">Join Us On Our Special Day</p>
+          <h2 class="font-serif text-4xl md:text-5xl">Wedding Details</h2>
+          <div class="w-16 h-[1px] gold-gradient-bg mx-auto mt-4 opacity-60"></div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8">
+          <!-- Ceremony Card -->
+          <div class="bg-[#0a1812] p-8 md:p-10 rounded-2xl border border-amber-500/20 shadow-xl reveal">
+            <div class="w-12 h-12 rounded-full gold-gradient-bg text-emerald-950 flex items-center justify-center font-bold text-xl mb-6">
+              ✦
+            </div>
+            <h3 class="font-serif text-3xl text-amber-100 mb-2">The Ceremony</h3>
+            <p class="text-xs uppercase tracking-widest text-amber-400 mb-6">4:30 PM • Sunset Exchange</p>
+            <p class="text-amber-100/80 font-light mb-6 leading-relaxed">
+              Join us in the Glasshouse Botanical Pavilion as we take our vows against the stunning backdrop of the coastline.
+            </p>
+            <p class="text-sm text-amber-200/90 font-medium">Dress Code: Black Tie Optional / Formal</p>
+          </div>
+
+          <!-- Reception Card -->
+          <div class="bg-[#0a1812] p-8 md:p-10 rounded-2xl border border-amber-500/20 shadow-xl reveal">
+            <div class="w-12 h-12 rounded-full gold-gradient-bg text-emerald-950 flex items-center justify-center font-bold text-xl mb-6">
+              🥂
+            </div>
+            <h3 class="font-serif text-3xl text-amber-100 mb-2">The Reception</h3>
+            <p class="text-xs uppercase tracking-widest text-amber-400 mb-6">6:30 PM • Banquet & Dancing</p>
+            <p class="text-amber-100/80 font-light mb-6 leading-relaxed">
+              Celebrate with dinner, live music, and dancing in the Grand Ballroom into the starlit evening.
+            </p>
+            <p class="text-sm text-amber-200/90 font-medium">Valet Parking Available At Main Entrance</p>
+          </div>
+        </div>
+
+        <!-- Calendar Export & Map Actions -->
+        <div class="mt-12 text-center reveal">
+          <button id="addToCalendarBtn" class="px-6 py-3 border border-amber-500/50 rounded-full text-xs uppercase tracking-widest gold-gradient-text hover:bg-amber-500/10 transition mr-4">
+            📅 Add to Calendar (.ics)
+          </button>
+          <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" class="inline-block px-6 py-3 gold-gradient-bg text-emerald-950 font-medium rounded-full text-xs uppercase tracking-widest hover:scale-105 transition">
+            📍 View Map Directions
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- PHOTO GALLERY SECTION -->
+    <section id="gallery" class="py-24 px-4 max-w-6xl mx-auto">
+      <div class="text-center mb-16 reveal">
+        <p class="text-xs uppercase tracking-[0.25em] text-amber-700 mb-2 font-medium">Cherished Moments</p>
+        <h2 class="font-serif text-4xl md:text-5xl text-emerald-950">Photo Gallery</h2>
+        <div class="w-16 h-[1px] bg-amber-600/40 mx-auto mt-4"></div>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 reveal">
+        <div class="h-64 rounded-xl overflow-hidden shadow-lg border border-amber-900/10">
+          <img src="https://picsum.photos/600/600?random=10" alt="Gallery 1" class="w-full h-full object-cover hover:scale-110 transition duration-500" onerror="this.src='https://placehold.co/600x600/19382c/f3e5ab?text=Gallery+1'">
+        </div>
+        <div class="h-64 rounded-xl overflow-hidden shadow-lg border border-amber-900/10">
+          <img src="https://picsum.photos/600/600?random=11" alt="Gallery 2" class="w-full h-full object-cover hover:scale-110 transition duration-500" onerror="this.src='https://placehold.co/600x600/19382c/f3e5ab?text=Gallery+2'">
+        </div>
+        <div class="h-64 rounded-xl overflow-hidden shadow-lg border border-amber-900/10">
+          <img src="https://picsum.photos/600/600?random=12" alt="Gallery 3" class="w-full h-full object-cover hover:scale-110 transition duration-500" onerror="this.src='https://placehold.co/600x600/19382c/f3e5ab?text=Gallery+3'">
+        </div>
+        <div class="h-64 rounded-xl overflow-hidden shadow-lg border border-amber-900/10">
+          <img src="https://picsum.photos/600/600?random=13" alt="Gallery 4" class="w-full h-full object-cover hover:scale-110 transition duration-500" onerror="this.src='https://placehold.co/600x600/19382c/f3e5ab?text=Gallery+4'">
+        </div>
+      </div>
+    </section>
+
+    <!-- INTERACTIVE DRAWING / DOODLE GUESTBOOK -->
+    <section id="guestbook" class="bg-amber-50/50 py-24 px-4 border-t border-amber-200/60">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12 reveal">
+          <p class="text-xs uppercase tracking-[0.25em] text-amber-700 mb-2 font-medium">Leave Your Blessings</p>
+          <h2 class="font-serif text-4xl md:text-5xl text-emerald-950">Interactive Guestbook</h2>
+          <p class="text-sm text-gray-600 mt-2">Write a message or draw a heartfelt doodle for the couple.</p>
+        </div>
+
+        <div class="bg-white p-6 md:p-8 rounded-2xl shadow-xl border border-amber-900/10 reveal">
+          <form id="guestbookForm" class="space-y-6">
+            <div>
+              <label class="block text-xs uppercase tracking-widest text-gray-700 mb-2 font-medium">Your Name</label>
+              <input type="text" id="guestNameInput" required placeholder="e.g. Aunt Fatima & Uncle Omar" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-amber-600">
+            </div>
+
+            <div>
+              <label class="block text-xs uppercase tracking-widest text-gray-700 mb-2 font-medium">Your Message</label>
+              <textarea id="guestMessageInput" rows="3" required placeholder="Wishing you a lifetime of love and bliss..." class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-amber-600"></textarea>
+            </div>
+
+            <!-- Canvas Doodle Area -->
+            <div>
+              <div class="flex justify-between items-center mb-2">
+                <label class="text-xs uppercase tracking-widest text-gray-700 font-medium">Draw a Doodle (Optional)</label>
+                <div class="flex gap-2 items-center">
+                  <span class="text-xs text-gray-500">Color:</span>
+                  <button type="button" class="w-6 h-6 rounded-full bg-emerald-900 border border-gray-300 color-picker-btn active" data-color="#0a1812"></button>
+                  <button type="button" class="w-6 h-6 rounded-full bg-amber-600 border border-gray-300 color-picker-btn" data-color="#d4af37"></button>
+                  <button type="button" class="w-6 h-6 rounded-full bg-rose-700 border border-gray-300 color-picker-btn" data-color="#b91c1c"></button>
+                  <button type="button" id="clearCanvasBtn" class="text-xs text-amber-800 underline ml-2">Clear Canvas</button>
+                </div>
+              </div>
+              
+              <div class="border border-dashed border-amber-400/80 rounded-lg overflow-hidden bg-cream-paper">
+                <canvas id="guestbookCanvas" width="700" height="200" class="w-full h-48"></canvas>
+              </div>
+            </div>
+
+            <button type="submit" class="w-full py-4 gold-gradient-bg text-emerald-950 font-medium rounded-lg text-xs uppercase tracking-widest shadow-md hover:scale-[1.01] transition">
+              Sign Guestbook
+            </button>
+          </form>
+
+          <!-- Guestbook Messages Wall -->
+          <div class="mt-12 pt-8 border-t border-gray-200">
+            <h3 class="font-serif text-2xl text-emerald-950 mb-6">Wishes & Messages</h3>
+            <div id="guestbookWall" class="space-y-4 max-h-96 overflow-y-auto pr-2">
+              <div class="p-4 bg-amber-50/60 rounded-lg border border-amber-200/50">
+                <p class="font-serif font-bold text-lg text-emerald-950">Grandma Salma</p>
+                <p class="text-sm text-gray-600 mt-1">May your home be filled with endless joy, peace, and love forever!</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MULTI-STEP RSVP FLOW -->
+    <section id="rsvp" class="bg-[#0a1812] text-amber-50 py-24 px-4">
+      <div class="max-w-2xl mx-auto">
+        <div class="text-center mb-12 reveal">
+          <p class="text-xs uppercase tracking-[0.25em] gold-gradient-text mb-2 font-medium">Will You Join Us?</p>
+          <h2 class="font-serif text-4xl md:text-5xl">RSVP Confirmation</h2>
+          <p class="text-xs uppercase tracking-widest text-amber-300/80 mt-2">Kindly respond before September 15, 2026</p>
+        </div>
+
+        <div class="bg-[#11281f] p-8 rounded-2xl border border-amber-500/20 shadow-2xl relative reveal" id="rsvpContainer">
+          
+          <!-- RSVP Multi-step Form -->
+          <form id="rsvpForm" class="space-y-6">
+            
+            <!-- Step Indicator -->
+            <div class="flex justify-between items-center mb-8 border-b border-amber-500/20 pb-4">
+              <span class="text-xs uppercase tracking-widest text-amber-300 font-semibold" id="stepTitle">Step 1 of 2: Attendance</span>
+              <div class="flex gap-2">
+                <div class="w-3 h-3 rounded-full gold-gradient-bg" id="stepDot1"></div>
+                <div class="w-3 h-3 rounded-full bg-emerald-900" id="stepDot2"></div>
+              </div>
+            </div>
+
+            <!-- STEP 1 FIELDS -->
+            <div id="rsvpStep1" class="space-y-4">
+              <div>
+                <label class="block text-xs uppercase tracking-widest text-amber-200 mb-2">Full Name</label>
+                <input type="text" id="rsvpName" required placeholder="Enter your full name" class="w-full px-4 py-3 rounded-lg bg-[#0a1812] border border-amber-500/30 text-amber-50 focus:outline-none focus:border-amber-400">
+              </div>
+
+              <div>
+                <label class="block text-xs uppercase tracking-widest text-amber-200 mb-2">Will You Attend?</label>
+                <select id="rsvpAttendance" class="w-full px-4 py-3 rounded-lg bg-[#0a1812] border border-amber-500/30 text-amber-50 focus:outline-none focus:border-amber-400">
+                  <option value="Joyfully Accepts">Joyfully Accepts</option>
+                  <option value="Regretfully Declines">Regretfully Declines</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-xs uppercase tracking-widest text-amber-200 mb-2">Number of Guests</label>
+                <select id="rsvpGuestCount" class="w-full px-4 py-3 rounded-lg bg-[#0a1812] border border-amber-500/30 text-amber-50 focus:outline-none focus:border-amber-400">
+                  <option value="1">1 Guest (Self)</option>
+                  <option value="2">2 Guests</option>
+                  <option value="3">3 Guests</option>
+                  <option value="4">4 Guests</option>
+                </select>
+              </div>
+
+              <button type="button" id="nextStepBtn" class="w-full py-4 gold-gradient-bg text-emerald-950 font-medium rounded-lg text-xs uppercase tracking-widest mt-6 hover:scale-[1.01] transition">
+                Continue to Meal Preferences →
+              </button>
+            </div>
+
+            <!-- STEP 2 FIELDS -->
+            <div id="rsvpStep2" class="space-y-4 hidden">
+              <div>
+                <label class="block text-xs uppercase tracking-widest text-amber-200 mb-2">Dietary / Meal Preference</label>
+                <select id="rsvpMeal" class="w-full px-4 py-3 rounded-lg bg-[#0a1812] border border-amber-500/30 text-amber-50 focus:outline-none focus:border-amber-400">
+                  <option value="Standard Menu">Standard Gourmet Menu</option>
+                  <option value="Vegetarian / Vegan">Vegetarian / Vegan</option>
+                  <option value="Gluten-Free">Gluten-Free</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-xs uppercase tracking-widest text-amber-200 mb-2">Note for the Couple (Optional)</label>
+                <textarea id="rsvpNote" rows="3" placeholder="Any special wishes or song requests?" class="w-full px-4 py-3 rounded-lg bg-[#0a1812] border border-amber-500/30 text-amber-50 focus:outline-none focus:border-amber-400"></textarea>
+              </div>
+
+              <div class="flex gap-4 pt-4">
+                <button type="button" id="prevStepBtn" class="w-1/3 py-4 border border-amber-500/40 text-amber-200 font-medium rounded-lg text-xs uppercase tracking-widest hover:bg-amber-500/10 transition">
+                  ← Back
+                </button>
+                <button type="submit" class="w-2/3 py-4 gold-gradient-bg text-emerald-950 font-medium rounded-lg text-xs uppercase tracking-widest hover:scale-[1.01] transition">
+                  Submit RSVP
+                </button>
+              </div>
+            </div>
+          </form>
+
+          <!-- RSVP PASS SUMMARY SCREEN -->
+          <div id="rsvpPassScreen" class="hidden text-center py-6 space-y-6">
+            <div class="w-16 h-16 rounded-full gold-gradient-bg text-emerald-950 flex items-center justify-center font-bold text-2xl mx-auto shadow-lg">
+              ✓
+            </div>
+            <h3 class="font-serif text-3xl text-amber-100">RSVP Confirmed!</h3>
+            <p class="text-sm text-amber-200/80 font-light">
+              Thank you, <span id="passGuestName" class="font-bold gold-gradient-text">Guest</span>. We have saved your reservation!
+            </p>
+
+            <!-- Digital Pass Card -->
+            <div class="p-6 bg-[#0a1812] rounded-xl border border-amber-500/40 text-left space-y-3">
+              <div class="flex justify-between items-center border-b border-amber-500/20 pb-2">
+                <span class="font-serif text-lg gold-gradient-text">Layla & Youssef Wedding</span>
+                <span class="text-[10px] uppercase tracking-widest text-amber-400">Digital Pass</span>
+              </div>
+              <p class="text-xs text-amber-200/90"><strong class="text-amber-100">Status:</strong> <span id="passStatus">Joyfully Accepts</span></p>
+              <p class="text-xs text-amber-200/90"><strong class="text-amber-100">Party Size:</strong> <span id="passCount">1</span> Guest(s)</p>
+              <p class="text-xs text-amber-200/90"><strong class="text-amber-100">Date:</strong> October 24, 2026</p>
+            </div>
+
+            <button type="button" id="resetRsvpBtn" class="text-xs text-amber-400 underline uppercase tracking-widest">
+              Edit RSVP Submission
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-[#0a1812] border-t border-amber-500/20 py-12 text-center text-amber-200/60 text-xs uppercase tracking-widest">
+      <p class="font-serif text-2xl gold-gradient-text mb-2">Layla & Youssef</p>
+      <p>October 24, 2026 • Alexandria, Egypt</p>
     </footer>
-  </main>
 
+    <!-- AMBIENT MUSIC TOGGLE BUTTON -->
+    <button id="musicToggleBtn" class="fixed bottom-6 left-6 z-50 px-4 py-3 bg-[#11281f]/90 border border-amber-500/40 text-amber-100 rounded-full text-xs uppercase tracking-widest shadow-xl flex items-center gap-2 backdrop-blur-md hover:bg-amber-500/20 transition">
+      <span id="musicIcon">🎵</span>
+      <span id="musicText">Sound On</span>
+    </button>
+
+    <!-- Synthetic Web Audio Synth for Ambient Music -->
+    <!-- (Eliminates broken external mp3 URL issues) -->
+
+  </div>
+
+  <!-- JAVASCRIPT APPLICATION LOGIC -->
   <script>
-    // Opening envelope trigger
-    document.getElementById('openTrigger').addEventListener('click', () => {
-      document.getElementById('opening').classList.add('opened');
-      const website = document.getElementById('website');
-      website.removeAttribute('aria-hidden');
-      website.classList.add('is-visible');
+    // --- 1. AMBIENT MUSIC SYNTHESIZER (Tone / Web Audio API) ---
+    let audioCtx = null;
+    let isPlaying = false;
+    let musicInterval = null;
+
+    function initAmbientMusic() {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+      
+      const notes = [261.63, 329.63, 392.00, 523.25, 440.00, 349.23]; // Soft romantic chords
+      let noteIdx = 0;
+
+      function playSoftNote() {
+        if (!isPlaying || !audioCtx) return;
+        
+        try {
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(notes[noteIdx % notes.length], audioCtx.currentTime);
+          
+          gain.gain.setValueAtTime(0.001, audioCtx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.04, audioCtx.currentTime + 1);
+          gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 4);
+          
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+          
+          osc.start();
+          osc.stop(audioCtx.currentTime + 4.1);
+          
+          noteIdx++;
+        } catch (e) { console.log(e); }
+      }
+
+      isPlaying = true;
+      playSoftNote();
+      musicInterval = setInterval(playSoftNote, 3000);
+    }
+
+    const musicBtn = document.getElementById('musicToggleBtn');
+    musicBtn.addEventListener('click', () => {
+      if (!isPlaying) {
+        initAmbientMusic();
+        document.getElementById('musicText').textContent = 'Sound On';
+        document.getElementById('musicIcon').textContent = '🎵';
+      } else {
+        isPlaying = false;
+        if (musicInterval) clearInterval(musicInterval);
+        document.getElementById('musicText').textContent = 'Sound Off';
+        document.getElementById('musicIcon').textContent = '🔇';
+      }
     });
 
-    // Countdown Timer logic
-    const weddingDate = new Date('2026-10-14T17:00:00').getTime();
-    setInterval(() => {
-      const now = Date.now();
-      const diff = weddingDate - now;
-      if (diff > 0) {
-        document.getElementById('days').textContent = Math.floor(diff / 86400000);
-        document.getElementById('hours').textContent = Math.floor((diff / 3600000) % 24);
-        document.getElementById('minutes').textContent = Math.floor((diff / 60000) % 60);
-        document.getElementById('seconds').textContent = Math.floor((diff / 1000) % 60);
+    // --- 2. ENVELOPE OPENING ANIMATION SEQUENCE ---
+    const envelope = document.getElementById('envelopeContainer');
+    const overlay = document.getElementById('opening-overlay');
+    const mainWebsite = document.getElementById('mainWebsite');
+    let isOpened = false;
+
+    function handleEnvelopeOpen() {
+      if (isOpened) return;
+      isOpened = true;
+
+      // Start Synthesized Music
+      try { initAmbientMusic(); } catch(e){}
+
+      // Animation Step 1: Flap Opens
+      envelope.classList.add('open');
+      document.getElementById('sealPrompt').style.opacity = '0';
+
+      // Animation Step 2: Slide Card Up
+      setTimeout(() => {
+        envelope.classList.add('pull-card');
+      }, 700);
+
+      // Animation Step 3: Zoom In
+      setTimeout(() => {
+        envelope.classList.add('read-card');
+      }, 1600);
+
+      // Animation Step 4: Fade Out Overlay & Reveal Webpage
+      setTimeout(() => {
+        overlay.classList.add('hidden-overlay');
+        mainWebsite.classList.remove('opacity-0');
+      }, 3000);
+    }
+
+    document.getElementById('waxSeal').addEventListener('click', handleEnvelopeOpen);
+    envelope.addEventListener('click', handleEnvelopeOpen);
+
+    // --- 3. LIVE COUNTDOWN TIMER ---
+    const weddingDate = new Date('October 24, 2026 16:30:00').getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = weddingDate - now;
+
+      if (distance < 0) {
+        document.getElementById('countdownTimer').innerHTML = "<p class='col-span-4 text-center font-serif text-2xl gold-gradient-text'>Today is the Day!</p>";
+        return;
       }
-    }, 1000);
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById('days').textContent = String(days).padStart(2, '0');
+      document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+      document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+      document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    // --- 4. CALENDAR EXPORT (.ics File) ---
+    document.getElementById('addToCalendarBtn').addEventListener('click', () => {
+      const icsContent = [
+        'BEGIN:VCALENDAR',
+        'VERSION:2.0',
+        'BEGIN:VEVENT',
+        'SUMMARY:Layla & Youssef Wedding',
+        'DESCRIPTION:Join us to celebrate the wedding of Layla and Youssef!',
+        'LOCATION:The Glasshouse Estate, Alexandria, Egypt',
+        'DTSTART:20261024T163000Z',
+        'DTEND:20261024T230000Z',
+        'END:VEVENT',
+        'END:VCALENDAR'
+      ].join('\n');
+
+      const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = 'Layla-Youssef-Wedding.ics';
+      link.click();
+    });
+
+    // --- 5. INTERACTIVE GUESTBOOK CANVAS ---
+    const canvas = document.getElementById('guestbookCanvas');
+    const ctx = canvas.getContext('2d');
+    let isDrawing = false;
+    let currentColor = '#0a1812';
+
+    // Resize canvas safely for display
+    function resizeCanvas() {
+      const rect = canvas.getBoundingClientRect();
+      canvas.width = rect.width;
+      canvas.height = rect.height;
+      ctx.lineWidth = 3;
+      ctx.lineCap = 'round';
+      ctx.strokeStyle = currentColor;
+    }
+
+    window.addEventListener('resize', resizeCanvas);
+    setTimeout(resizeCanvas, 500);
+
+    function getPos(e) {
+      const rect = canvas.getBoundingClientRect();
+      const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+      const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+      return {
+        x: clientX - rect.left,
+        y: clientY - rect.top
+      };
+    }
+
+    function startDrawing(e) {
+      isDrawing = true;
+      const pos = getPos(e);
+      ctx.beginPath();
+      ctx.moveTo(pos.x, pos.y);
+    }
+
+    function draw(e) {
+      if (!isDrawing) return;
+      const pos = getPos(e);
+      ctx.strokeStyle = currentColor;
+      ctx.lineTo(pos.x, pos.y);
+      ctx.stroke();
+    }
+
+    function stopDrawing() { isDrawing = false; }
+
+    canvas.addEventListener('mousedown', startDrawing);
+    canvas.addEventListener('mousemove', draw);
+    canvas.addEventListener('mouseup', stopDrawing);
+    canvas.addEventListener('touchstart', startDrawing);
+    canvas.addEventListener('touchmove', draw);
+    canvas.addEventListener('touchend', stopDrawing);
+
+    document.querySelectorAll('.color-picker-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        currentColor = e.target.getAttribute('data-color');
+      });
+    });
+
+    document.getElementById('clearCanvasBtn').addEventListener('click', () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    });
+
+    // Form submission for Guestbook
+    document.getElementById('guestbookForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('guestNameInput').value;
+      const msg = document.getElementById('guestMessageInput').value;
+
+      const wall = document.getElementById('guestbookWall');
+      const entry = document.createElement('div');
+      entry.className = "p-4 bg-amber-50/60 rounded-lg border border-amber-200/50 space-y-2";
+      
+      let html = `<p class="font-serif font-bold text-lg text-emerald-950">${name}</p><p class="text-sm text-gray-600">${msg}</p>`;
+      
+      // Save canvas doodle image if drawn
+      const dataUrl = canvas.toDataURL();
+      html += `<img src="${dataUrl}" class="max-h-20 rounded border border-amber-300 mt-2 bg-white p-1">`;
+      
+      entry.innerHTML = html;
+      wall.prepend(entry);
+
+      // Reset
+      document.getElementById('guestNameInput').value = '';
+      document.getElementById('guestMessageInput').value = '';
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    });
+
+    // --- 6. MULTI-STEP RSVP FLOW ---
+    const step1 = document.getElementById('rsvpStep1');
+    const step2 = document.getElementById('rsvpStep2');
+    const passScreen = document.getElementById('rsvpPassScreen');
+    const stepTitle = document.getElementById('stepTitle');
+    const dot1 = document.getElementById('stepDot1');
+    const dot2 = document.getElementById('stepDot2');
+
+    document.getElementById('nextStepBtn').addEventListener('click', () => {
+      const name = document.getElementById('rsvpName').value;
+      if (!name.trim()) {
+        alert('Please enter your full name.');
+        return;
+      }
+      step1.classList.add('hidden');
+      step2.classList.remove('hidden');
+      stepTitle.textContent = 'Step 2 of 2: Meal Preferences';
+      dot1.classList.replace('gold-gradient-bg', 'bg-emerald-900');
+      dot2.classList.replace('bg-emerald-900', 'gold-gradient-bg');
+    });
+
+    document.getElementById('prevStepBtn').addEventListener('click', () => {
+      step2.classList.add('hidden');
+      step1.classList.remove('hidden');
+      stepTitle.textContent = 'Step 1 of 2: Attendance';
+      dot2.classList.replace('gold-gradient-bg', 'bg-emerald-900');
+      dot1.classList.replace('bg-emerald-900', 'gold-gradient-bg');
+    });
+
+    document.getElementById('rsvpForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      const name = document.getElementById('rsvpName').value;
+      const status = document.getElementById('rsvpAttendance').value;
+      const count = document.getElementById('rsvpGuestCount').value;
+
+      document.getElementById('passGuestName').textContent = name;
+      document.getElementById('passStatus').textContent = status;
+      document.getElementById('passCount').textContent = count;
+
+      document.getElementById('rsvpForm').classList.add('hidden');
+      passScreen.classList.remove('hidden');
+    });
+
+    document.getElementById('resetRsvpBtn').addEventListener('click', () => {
+      passScreen.classList.add('hidden');
+      step2.classList.add('hidden');
+      step1.classList.remove('hidden');
+      document.getElementById('rsvpForm').classList.remove('hidden');
+    });
+
+    // --- 7. SCROLL REVEAL ANIMATIONS ---
+    function revealOnScroll() {
+      const reveals = document.querySelectorAll('.reveal');
+      const windowHeight = window.innerHeight;
+
+      reveals.forEach(el => {
+        const elementTop = el.getBoundingClientRect().top;
+        if (elementTop < windowHeight - 80) {
+          el.classList.add('active');
+        }
+      });
+    }
+
+    window.addEventListener('scroll', revealOnScroll);
+    revealOnScroll();
+
+    // --- 8. GENERATE PETALS BACKGROUND ---
+    const petalContainer = document.getElementById('petalContainer');
+    for (let i = 0; i < 15; i++) {
+      const petal = document.createElement('div');
+      petal.className = 'petal';
+      petal.style.left = `${Math.random() * 100}%`;
+      petal.style.animationDelay = `${Math.random() * 12}s`;
+      petal.style.animationDuration = `${12 + Math.random() * 8}s`;
+      petalContainer.appendChild(petal);
+    }
   </script>
 </body>
 </html>
