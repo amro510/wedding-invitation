@@ -19,6 +19,7 @@
   <div class="grain" aria-hidden="true"></div>
   <div class="petal-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
 
+  <!-- ENVELOPE OPENING SCREEN -->
   <section class="opening" id="opening" aria-label="Open your invitation">
     <div class="particles"></div>
     <p class="opening-kicker" data-config="openingKicker">A CELEBRATION OF LOVE</p>
@@ -31,12 +32,12 @@
         <div class="invitation-card-preview" id="preview-card">
           <div class="card-border">
             <div class="card-image-wrap">
-              <img id="card-couple-image" src="src/cardImage.png" alt="Couple">
+              <img id="card-couple-image" src="https://picsum.photos/400/400" alt="Couple">
             </div>
-            <h2 id="preview-names" class="gold-text"><span data-config="bride">Bride</span> &amp; <span
-                data-config="groom">Groom</span></h2>
+            <h2 class="gold-text"><span data-config="bride">Layla</span> &amp; <span
+                data-config="groom">Youssef</span></h2>
             <p class="invite-subtitle">Are getting married</p>
-            <p class="card-date" id="card-date" data-config="dateDisplay">Date</p>
+            <p class="card-date" data-config="dateDisplay">Date</p>
           </div>
         </div>
 
@@ -50,8 +51,8 @@
 
         <div class="wax-seal" id="wax-seal">
           <div class="seal-inner">
-            <span class="seal-initials" id="seal-initials"><span data-config="brideInitial">B</span>&amp;<span
-                data-config="groomInitial">G</span></span>
+            <span class="seal-initials"><span data-config="bride">L</span>&amp;<span
+                data-config="groom">Y</span></span>
           </div>
           <div class="seal-shadow"></div>
         </div>
@@ -63,9 +64,10 @@
     <div class="tap-hint">TAP THE SEAL TO OPEN</div>
   </section>
 
+  <!-- MAIN WEBSITE CONTENT -->
   <main id="website" class="website" aria-hidden="true">
     <nav class="nav" aria-label="Main navigation">
-      <a class="nav-mark" href="#home" data-config="monogram">B <i>&amp;</i> G</a>
+      <a class="nav-mark" href="#home" data-config="monogram">L <i>&amp;</i> Y</a>
       <button class="nav-menu" id="navMenu" type="button" aria-expanded="false" aria-controls="navLinks">Menu
         <span></span></button>
       <div class="nav-links" id="navLinks">
@@ -119,37 +121,31 @@
       <div class="moments" id="storyMoments"></div>
     </section>
 
-    <!-- Photo Gallery Section -->
     <section class="photo-gallery section" id="gallery">
       <div class="section-intro centered reveal">
         <p class="eyebrow">Captured moments</p>
         <h2>Our journey in <em>pictures</em></h2>
       </div>
       <div class="gallery-grid reveal" id="galleryGrid">
-        <div class="gallery-item large"><img src="src/gallery1.jpg" alt="Couple photo 1" loading="lazy"></div>
-        <div class="gallery-item"><img src="src/gallery2.jpg" alt="Couple photo 2" loading="lazy"></div>
-        <div class="gallery-item"><img src="src/gallery3.jpg" alt="Couple photo 3" loading="lazy"></div>
-        <div class="gallery-item wide"><img src="src/gallery4.jpg" alt="Couple photo 4" loading="lazy"></div>
+        <div class="gallery-item large"><img src="https://picsum.photos/600/600?random=1" alt="Couple photo 1" loading="lazy"></div>
+        <div class="gallery-item"><img src="https://picsum.photos/600/600?random=2" alt="Couple photo 2" loading="lazy"></div>
+        <div class="gallery-item"><img src="https://picsum.photos/600/600?random=3" alt="Couple photo 3" loading="lazy"></div>
+        <div class="gallery-item wide"><img src="https://picsum.photos/600/600?random=4" alt="Couple photo 4" loading="lazy"></div>
       </div>
     </section>
 
     <section class="details section" id="details">
-      <div class="details-art" aria-hidden="true">
-        <div class="arch"></div>
-        <div class="floral-line"></div>
-      </div>
       <div class="details-content reveal">
         <p class="eyebrow">Save the date</p>
         <h2>Join us for a day<br /><em>to remember</em></h2>
         <div class="detail-grid reveal">
           <div><span class="detail-icon">◷</span>
             <p class="label" id="ceremonyTitle">Ceremony</p>
-            <p><b id="ceremonyTime">4:30 PM</b><br /><span data-config="dateShort">[Wedding Date]</span></p>
+            <p><b id="ceremonyTime">5:00 PM</b><br /><span data-config="dateShort">[Wedding Date]</span></p>
           </div>
           <div><span class="detail-icon">✦</span>
             <p class="label" id="receptionTitle">Reception</p>
-            <p><b id="receptionTime">6:00 PM</b><br /><span id="receptionLocation">Dinner &amp; dancing to follow</span>
-            </p>
+            <p><b id="receptionTime">6:30 PM</b><br /><span id="receptionLocation">Grand Ballroom</span></p>
           </div>
           <div><span class="detail-icon">⌖</span>
             <p class="label">Location</p>
@@ -157,7 +153,7 @@
           </div>
           <div><span class="detail-icon">✿</span>
             <p class="label">Dress code</p>
-            <p><b data-config="dressCode">Formal attire</b><br /><span data-config="note">Please arrive 30 minutes early.</span></p>
+            <p><b data-config="dressCode">Black Tie Optional</b><br /><span data-config="note">Valet parking available.</span></p>
           </div>
         </div>
         <div class="detail-actions"><button class="button button-light" id="calendarButton" type="button">Add to
@@ -166,27 +162,7 @@
       </div>
     </section>
 
-    <section class="location section" id="location">
-      <div class="location-copy reveal">
-        <p class="eyebrow">Find your way</p>
-        <h2>A place made<br />for <em>magic</em></h2>
-        <p>We would be honored to have you with us at <span data-config="venue">[Venue Name]</span>, where our next
-          chapter begins.</p>
-        <address data-config="address">[Full Address]</address><a class="button button-burgundy" id="mapButton"
-          href="https://maps.google.com" target="_blank" rel="noopener">Open in maps <span>↗</span></a>
-      </div>
-      <div class="map-card reveal" id="mapPreview" aria-label="Venue map preview">
-        <div class="map-lines"><i></i><i></i><i></i><i></i></div><span class="map-pin">♥</span><iframe id="mapEmbed"
-          title="Venue location map" loading="lazy" referrerpolicy="no-referrer-when-downgrade" hidden></iframe><a
-          class="map-label" id="mapPreviewLink" href="https://maps.google.com" target="_blank" rel="noopener"><b
-            data-config="venue">[Venue Name]</b><small>Tap for directions</small></a>
-      </div>
-    </section>
-
     <section class="guestbook section" id="guestbook">
-      <div class="guestbook-hero reveal" aria-hidden="true">
-        <img src="./src/image4.png" alt="" loading="lazy" />
-      </div>
       <div class="section-intro centered reveal">
         <p class="eyebrow">Leave a little love</p>
         <h2>Our <em>guestbook</em></h2>
@@ -199,16 +175,14 @@
               placeholder="Write a note from the heart…"></textarea></label>
           <div class="drawing-tools">
             <div><span class="label">Add a little doodle <small>(optional)</small></span>
-              <div class="colors" role="group" aria-label="Pen color"><button class="color active" style="--pen:#14532d"
-                  data-color="#14532d" type="button" aria-label="Emerald"></button><button class="color"
-                  style="--pen:#b45309" data-color="#b45309" type="button" aria-label="Gold"></button><button
-                  class="color" style="--pen:#4b5563" data-color="#4b5563" type="button"
-                  aria-label="Slate"></button><button class="color" style="--pen:#7f1d1d" data-color="#7f1d1d"
-                  type="button" aria-label="Burgundy"></button></div>
+              <div class="colors" role="group" aria-label="Pen color">
+                <button class="color active" style="--pen:#14532d" data-color="#14532d" type="button"></button>
+                <button class="color" style="--pen:#b45309" data-color="#b45309" type="button"></button>
+                <button class="color" style="--pen:#4b5563" data-color="#4b5563" type="button"></button>
+              </div>
             </div><button class="clear-drawing" id="clearDrawing" type="button">Clear</button>
           </div>
-          <canvas id="drawingCanvas" width="660" height="250"
-            aria-label="Optional drawing canvas. Draw with your mouse or finger."></canvas>
+          <canvas id="drawingCanvas" width="660" height="250"></canvas>
           <button class="button button-burgundy full" type="submit">Send your wishes <span>♡</span></button>
           <p class="form-status" id="wishStatus" role="status"></p>
         </form>
@@ -219,9 +193,6 @@
     </section>
 
     <section class="rsvp section" id="rsvp">
-      <div class="rsvp-photo reveal" aria-hidden="true">
-        <div class="rsvp-photo-glow reveal"></div>
-      </div>
       <div class="rsvp-panel" id="rsvpPanel">
         <div class="rsvp-heading reveal">
           <p class="eyebrow">Will you join us?</p>
@@ -247,7 +218,7 @@
           </fieldset>
           <fieldset class="rsvp-step" data-step="3">
             <legend>Just a few final details</legend><label>Meal preference<select id="meal"
-                name="meal"></select></label><label>Email or phone <small>(optional)</small><input id="contact"
+                name="meal"><option>Standard</option><option>Vegetarian</option></select></label><label>Email or phone <small>(optional)</small><input id="contact"
                 name="contact" autocomplete="email" placeholder="For any updates" /></label><label>A note for the couple
               <small>(optional)</small><textarea id="rsvpNote" name="rsvpNote" maxlength="250"
                 placeholder="A few kind words…"></textarea></label>
@@ -259,29 +230,20 @@
       </div>
       <div class="pass-screen" id="passScreen" hidden>
         <div class="pass-inner">
-          <div class="pass-top"><span data-config="monogram">B &amp; G</span><small>WEDDING PASS</small></div>
+          <div class="pass-top"><span data-config="monogram">L &amp; Y</span><small>WEDDING PASS</small></div>
           <p class="pass-eyebrow">We’re so glad you’ll be there</p>
           <h2>Thank you,<br /><em id="passName">friend</em>.</h2>
           <p class="pass-message">We cannot wait to celebrate with you.</p>
-          <div class="qr-wrap"><canvas id="qrCanvas" width="420" height="420" aria-label="Your RSVP QR code"></canvas>
-          </div>
           <div class="pass-details"><span><small>GUESTS</small><b
                 id="passGuests">1</b></span><span><small>DATE</small><b data-config="dateShort">[Wedding
                 Date]</b></span><span><small>STATUS</small><b id="passStatus">Accepted</b></span></div>
-          <p class="pass-venue" data-config="venue">[Venue Name]</p><button class="button button-light" id="savePass"
-            type="button">Save your pass <span>↓</span></button><button class="text-link" id="rsvpAgain"
+          <p class="pass-venue" data-config="venue">[Venue Name]</p><button class="button button-light" id="rsvpAgain"
             type="button">Edit RSVP</button>
         </div>
       </div>
     </section>
 
-    <section class="closing reveal">
-      <div class="closing-flower reveal" aria-hidden="true">✦</div>
-      <p data-config="closingMessage">Your presence will make our celebration even more special.</p><a href="#home"
-        class="closing-monogram reveal" data-config="monogram">B <i>&amp;</i> G</a>
-    </section>
-    <footer><span data-config="couple">[Bride Name] &amp; [Groom Name]</span><i>♥</i><span
-        data-config="dateShort">[Wedding Date]</span></footer>
+    <footer><span data-config="couple">[Names]</span><i>♥</i><span data-config="dateShort">[Date]</span></footer>
   </main>
 
   <button class="sound-toggle" id="soundToggle" type="button" aria-pressed="false" aria-label="Turn ambient sound on">♪
