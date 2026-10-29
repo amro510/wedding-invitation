@@ -15,16 +15,16 @@ const config = {
   heroInvitationLine: "request the pleasure of your company",
   closingMessage: "Your love and presence mean everything to us.",
 
-  // Main Photos
-  heroImage: "src/heroImage.jpg",
-  cardImage: "src/cardImage.png",
+// Temporary Placeholder Images for Testing
+  heroImage: "https://picsum.photos/1200/800",
+  cardImage: "https://picsum.photos/400/400",
 
-  // Photo Gallery Images (New!)
+  // Photo Gallery Placeholders
   gallery: [
-    "src/gallery1.jpg",
-    "src/gallery2.jpg",
-    "src/gallery3.jpg",
-    "src/gallery4.jpg"
+    "https://picsum.photos/600/600?random=1",
+    "https://picsum.photos/600/600?random=2",
+    "https://picsum.photos/600/600?random=3",
+    "https://picsum.photos/600/600?random=4"
   ],
 
   events: [
