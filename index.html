@@ -1,257 +1,117 @@
 <!doctype html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#111d17" />
-  <meta name="description" content="A wedding invitation." />
-  <title>Wedding Invitation</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@400;500;600&display=swap"
-    rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
+  <title>Layla & Youssef — Wedding Invitation</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ivory: #f8f3e9;
+      --paper: #fffdf8;
+      --burgundy: #661f2a;
+      --ink: #302522;
+      --gold: #aa803d;
+      --serif: "Cormorant Garamond", Georgia, serif;
+      --sans: "DM Sans", Arial, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; background: var(--ivory); }
+    body { margin: 0; color: var(--ink); background: var(--ivory); font-family: var(--sans); font-size: 18px; line-height: 1.6; }
+    
+    /* Opening Envelope */
+    .opening { position: fixed; inset: 0; height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; background: rgba(20, 15, 12, 0.9); z-index: 9999; transition: opacity 1s ease; }
+    .opening.opened { opacity: 0; visibility: hidden; pointer-events: none; }
+    .envelope-wrapper { text-align: center; cursor: pointer; }
+    .wax-seal { width: 80px; height: 80px; background: radial-gradient(circle, #a82030, #6b0f1a); border-radius: 50%; margin: 20px auto; display: flex; align-items: center; justify-content: center; color: #fce8cc; font-size: 24px; font-family: var(--serif); box-shadow: 0 10px 20px rgba(0,0,0,0.5); animation: pulse 2s infinite; }
+    @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.08); } }
+    .click-instruction { color: #fff; text-transform: uppercase; letter-spacing: 2px; font-size: 12px; margin-top: 15px; }
+
+    /* Main Site */
+    .website { opacity: 0; transition: opacity 1s ease; }
+    .website.is-visible { opacity: 1; }
+    .hero { min-height: 100vh; display: grid; place-items: center; text-align: center; background: radial-gradient(circle, #143623, #091a10); color: #fff; padding: 40px; }
+    .hero h1 { font-family: var(--serif); font-size: clamp(50px, 8vw, 100px); margin: 20px 0; font-weight: 400; color: #f9eddb; }
+    .hero h1 em { color: #deb95b; font-style: normal; display: block; font-size: 0.6em; }
+    .section { padding: 80px 20px; max-width: 800px; margin: 0 auto; text-align: center; }
+    .countdown-timer { display: flex; justify-content: center; gap: 20px; font-family: var(--serif); font-size: 36px; color: var(--gold); margin-top: 20px; }
+    .countdown-timer div span { display: block; font-size: 12px; font-family: var(--sans); text-transform: uppercase; letter-spacing: 1px; color: #666; }
+    .button { background: var(--burgundy); color: #fff; border: none; padding: 15px 30px; text-transform: uppercase; letter-spacing: 2px; font-size: 12px; cursor: pointer; margin-top: 20px; }
+    footer { text-align: center; padding: 40px; background: #0f1c15; color: #cbb4a5; font-size: 12px; letter-spacing: 2px; }
+  </style>
 </head>
-
 <body>
-  <div class="grain" aria-hidden="true"></div>
-  <div class="petal-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
 
-  <!-- ENVELOPE OPENING SCREEN -->
-  <section class="opening" id="opening" aria-label="Open your invitation">
-    <div class="particles"></div>
-    <p class="opening-kicker" data-config="openingKicker">A CELEBRATION OF LOVE</p>
-
-    <div id="envelope-wrapper" class="envelope-wrapper">
-      <div class="envelope-scene" id="envelope-scene">
-
-        <div class="envelope-back"></div>
-
-        <div class="invitation-card-preview" id="preview-card">
-          <div class="card-border">
-            <div class="card-image-wrap">
-              <img id="card-couple-image" src="https://picsum.photos/400/400" alt="Couple">
-            </div>
-            <h2 class="gold-text"><span data-config="bride">Layla</span> &amp; <span
-                data-config="groom">Youssef</span></h2>
-            <p class="invite-subtitle">Are getting married</p>
-            <p class="card-date" data-config="dateDisplay">Date</p>
-          </div>
-        </div>
-
-        <div class="flap bottom-flap"></div>
-        <div class="flap left-flap"></div>
-        <div class="flap right-flap"></div>
-
-        <div class="flap top-flap">
-          <div class="flap-texture"></div>
-        </div>
-
-        <div class="wax-seal" id="wax-seal">
-          <div class="seal-inner">
-            <span class="seal-initials"><span data-config="bride">L</span>&amp;<span
-                data-config="groom">Y</span></span>
-          </div>
-          <div class="seal-shadow"></div>
-        </div>
-
-      </div>
-      <p class="click-instruction" id="click-instruction">Tap the seal to open</p>
+  <!-- OPENING ENVELOPE OVERLAY -->
+  <section class="opening" id="opening">
+    <div class="envelope-wrapper" id="openTrigger">
+      <p style="color: #dfc89c; text-transform: uppercase; letter-spacing: 3px; font-size: 11px;">A Celebration of Love</p>
+      <h2 style="color: #fff; font-family: var(--serif); font-size: 40px; margin: 10px 0;">Layla & Youssef</h2>
+      <div class="wax-seal">L&Y</div>
+      <p class="click-instruction">Tap the seal to open your invitation</p>
     </div>
-
-    <div class="tap-hint">TAP THE SEAL TO OPEN</div>
   </section>
 
-  <!-- MAIN WEBSITE CONTENT -->
+  <!-- MAIN WEBSITE -->
   <main id="website" class="website" aria-hidden="true">
-    <nav class="nav" aria-label="Main navigation">
-      <a class="nav-mark" href="#home" data-config="monogram">L <i>&amp;</i> Y</a>
-      <button class="nav-menu" id="navMenu" type="button" aria-expanded="false" aria-controls="navLinks">Menu
-        <span></span></button>
-      <div class="nav-links" id="navLinks">
-        <a href="#story">Our story</a><a href="#gallery">Gallery</a><a href="#details">Details</a><a href="#guestbook">Guestbook</a><a
-          class="nav-rsvp" href="#rsvp">RSVP</a>
+    <section class="hero">
+      <div>
+        <p style="color: var(--gold); text-transform: uppercase; letter-spacing: 3px; font-size: 12px;">Together with their families</p>
+        <h1>Layla <em>&</em> Youssef</h1>
+        <p style="font-style: italic; font-family: var(--serif); font-size: 22px;">invite you to celebrate their wedding</p>
+        <p style="margin-top: 30px; letter-spacing: 2px;">OCTOBER 14, 2026 · THE GLASSHOUSE ESTATE, ALEXANDRIA</p>
       </div>
-    </nav>
-
-    <section class="hero" id="home">
-      <div class="hero-photo" id="heroPhoto">
-        <div class="hero-photo-fallback">
-          <div class="silhouette bride-silhouette"></div>
-          <div class="silhouette groom-silhouette"></div><span>Wedding photo<br />placeholder</span>
-        </div>
-      </div>
-      <div class="hero-overlay"></div>
-      <div class="hero-copy">
-        <p class="eyebrow">Together with their families</p>
-        <h1><span data-config="bride">[Bride Name]</span><em>&amp;</em><span data-config="groom">[Groom Name]</span>
-        </h1>
-        <p class="hero-invite" data-config="heroInvitationLine">invite you to celebrate their love</p>
-        <div class="hero-rule"><span></span><b>✦</b><span></span></div>
-        <p class="hero-date" data-config="dateDisplay">[Day, Month, Year]</p>
-        <p class="hero-venue"><span data-config="venue">[Venue Name]</span> <i>·</i> <span
-            data-config="city">[City]</span></p>
-      </div>
-      <a class="scroll-cue" href="#countdown"><span></span> Explore our day</a>
     </section>
 
-    <section class="countdown section" id="countdown">
-      <div class="section-intro centered reveal">
-        <p class="eyebrow">Counting the moments</p>
-        <h2>Until we say <em>“I do”</em></h2>
-      </div>
-      <div class="timer reveal" id="timer" aria-label="Countdown to the wedding">
-        <div><strong id="days">000</strong><span>Days</span></div><b></b>
-        <div><strong id="hours">00</strong><span>Hours</span></div><b></b>
-        <div><strong id="minutes">00</strong><span>Minutes</span></div><b></b>
+    <section class="section">
+      <h2 style="font-family: var(--serif); font-size: 40px;">Counting the Moments</h2>
+      <div class="countdown-timer" id="timer">
+        <div><strong id="days">00</strong><span>Days</span></div>
+        <div><strong id="hours">00</strong><span>Hours</span></div>
+        <div><strong id="minutes">00</strong><span>Minutes</span></div>
         <div><strong id="seconds">00</strong><span>Seconds</span></div>
       </div>
-      <p class="timer-note reveal" data-config="dateDisplay">[Day, Month, Year]</p>
     </section>
 
-    <section class="story section" id="story">
-      <div class="story-heading reveal">
-        <p class="eyebrow">The beginning of always</p>
-        <h2>Our <em>story</em></h2>
-        <p>Every love story is beautiful. Ours is our favorite.</p>
-      </div>
-      <div class="story-line" aria-hidden="true"></div>
-      <div class="moments" id="storyMoments"></div>
+    <section class="section" style="background: #fff; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); margin-bottom: 80px;">
+      <h2 style="font-family: var(--serif); font-size: 40px;">Will You Join Us?</h2>
+      <p style="color: #666; margin-bottom: 20px;">Please confirm your attendance below.</p>
+      <form id="rsvpForm" onsubmit="event.preventDefault(); alert('Thank you for your RSVP! We look forward to celebrating with you.');">
+        <input type="text" placeholder="Your Full Name" required style="padding: 12px; width: 80%; max-width: 400px; margin-bottom: 15px; border: 1px solid #ccc;"><br>
+        <select style="padding: 12px; width: 80%; max-width: 400px; margin-bottom: 20px; border: 1px solid #ccc;">
+          <option>Joyfully Accept</option>
+          <option>Regretfully Decline</option>
+        </select><br>
+        <button type="button" class="button" onclick="alert('Thank you! Your response has been recorded.')">Send RSVP</button>
+      </form>
     </section>
 
-    <section class="photo-gallery section" id="gallery">
-      <div class="section-intro centered reveal">
-        <p class="eyebrow">Captured moments</p>
-        <h2>Our journey in <em>pictures</em></h2>
-      </div>
-      <div class="gallery-grid reveal" id="galleryGrid">
-        <div class="gallery-item large"><img src="https://picsum.photos/600/600?random=1" alt="Couple photo 1" loading="lazy"></div>
-        <div class="gallery-item"><img src="https://picsum.photos/600/600?random=2" alt="Couple photo 2" loading="lazy"></div>
-        <div class="gallery-item"><img src="https://picsum.photos/600/600?random=3" alt="Couple photo 3" loading="lazy"></div>
-        <div class="gallery-item wide"><img src="https://picsum.photos/600/600?random=4" alt="Couple photo 4" loading="lazy"></div>
-      </div>
-    </section>
-
-    <section class="details section" id="details">
-      <div class="details-content reveal">
-        <p class="eyebrow">Save the date</p>
-        <h2>Join us for a day<br /><em>to remember</em></h2>
-        <div class="detail-grid reveal">
-          <div><span class="detail-icon">◷</span>
-            <p class="label" id="ceremonyTitle">Ceremony</p>
-            <p><b id="ceremonyTime">5:00 PM</b><br /><span data-config="dateShort">[Wedding Date]</span></p>
-          </div>
-          <div><span class="detail-icon">✦</span>
-            <p class="label" id="receptionTitle">Reception</p>
-            <p><b id="receptionTime">6:30 PM</b><br /><span id="receptionLocation">Grand Ballroom</span></p>
-          </div>
-          <div><span class="detail-icon">⌖</span>
-            <p class="label">Location</p>
-            <p><b data-config="venue">[Venue Name]</b><br /><span data-config="address">[Full Address]</span></p>
-          </div>
-          <div><span class="detail-icon">✿</span>
-            <p class="label">Dress code</p>
-            <p><b data-config="dressCode">Black Tie Optional</b><br /><span data-config="note">Valet parking available.</span></p>
-          </div>
-        </div>
-        <div class="detail-actions"><button class="button button-light" id="calendarButton" type="button">Add to
-            calendar <span>↗</span></button><a class="text-link" id="directionsLink" href="#location">Get directions
-            <span>→</span></a></div>
-      </div>
-    </section>
-
-    <section class="guestbook section" id="guestbook">
-      <div class="section-intro centered reveal">
-        <p class="eyebrow">Leave a little love</p>
-        <h2>Our <em>guestbook</em></h2>
-        <p>Your kind wishes will become part of our story.</p>
-      </div>
-      <div class="guestbook-layout reveal">
-        <form class="wish-form card" id="wishForm">
-          <label>Your name<input id="wishName" required maxlength="50" placeholder="Your name" /></label>
-          <label>Your message<textarea id="wishMessage" required maxlength="300"
-              placeholder="Write a note from the heart…"></textarea></label>
-          <div class="drawing-tools">
-            <div><span class="label">Add a little doodle <small>(optional)</small></span>
-              <div class="colors" role="group" aria-label="Pen color">
-                <button class="color active" style="--pen:#14532d" data-color="#14532d" type="button"></button>
-                <button class="color" style="--pen:#b45309" data-color="#b45309" type="button"></button>
-                <button class="color" style="--pen:#4b5563" data-color="#4b5563" type="button"></button>
-              </div>
-            </div><button class="clear-drawing" id="clearDrawing" type="button">Clear</button>
-          </div>
-          <canvas id="drawingCanvas" width="660" height="250"></canvas>
-          <button class="button button-burgundy full" type="submit">Send your wishes <span>♡</span></button>
-          <p class="form-status" id="wishStatus" role="status"></p>
-        </form>
-        <div class="wishes wishes-empty" id="wishes" aria-live="polite">
-          <p>Warm wishes from your loved ones will live here.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="rsvp section" id="rsvp">
-      <div class="rsvp-panel" id="rsvpPanel">
-        <div class="rsvp-heading reveal">
-          <p class="eyebrow">Will you join us?</p>
-          <h2>Kindly <em>RSVP</em></h2>
-          <p>Please respond by <span data-config="rsvpBy">[RSVP Date]</span></p>
-        </div>
-        <form class="rsvp-form reveal" id="rsvpForm" novalidate>
-          <div class="step-indicator"><span class="active"></span><span></span><span></span></div>
-          <fieldset class="rsvp-step active" data-step="1">
-            <legend>First, may we have your name?</legend><label>Full name<input id="guestName" name="guestName"
-                required autocomplete="name" placeholder="Your full name" /></label><label>Guests attending<select
-                id="guestCount" name="guestCount"></select></label><button class="button button-burgundy next-step"
-              type="button">Continue <span>→</span></button>
-          </fieldset>
-          <fieldset class="rsvp-step" data-step="2">
-            <legend>Will you be there?</legend>
-            <div class="attendance-options"><label><input type="radio" name="attendance" value="Joyfully accepts"
-                required /><span><b>Joyfully accept</b><small>We wouldn’t miss it</small></span></label><label><input
-                type="radio" name="attendance" value="Regretfully declines" /><span><b>Regretfully
-                  decline</b><small>Sending love from afar</small></span></label></div>
-            <div class="step-actions"><button class="text-link back-step" type="button">← Back</button><button
-                class="button button-burgundy next-step" type="button">Continue <span>→</span></button></div>
-          </fieldset>
-          <fieldset class="rsvp-step" data-step="3">
-            <legend>Just a few final details</legend><label>Meal preference<select id="meal"
-                name="meal"><option>Standard</option><option>Vegetarian</option></select></label><label>Email or phone <small>(optional)</small><input id="contact"
-                name="contact" autocomplete="email" placeholder="For any updates" /></label><label>A note for the couple
-              <small>(optional)</small><textarea id="rsvpNote" name="rsvpNote" maxlength="250"
-                placeholder="A few kind words…"></textarea></label>
-            <div class="step-actions"><button class="text-link back-step" type="button">← Back</button><button
-                class="button button-burgundy" type="submit">Send RSVP <span>♡</span></button></div>
-          </fieldset>
-          <p class="form-status" id="rsvpStatus" role="status"></p>
-        </form>
-      </div>
-      <div class="pass-screen" id="passScreen" hidden>
-        <div class="pass-inner">
-          <div class="pass-top"><span data-config="monogram">L &amp; Y</span><small>WEDDING PASS</small></div>
-          <p class="pass-eyebrow">We’re so glad you’ll be there</p>
-          <h2>Thank you,<br /><em id="passName">friend</em>.</h2>
-          <p class="pass-message">We cannot wait to celebrate with you.</p>
-          <div class="pass-details"><span><small>GUESTS</small><b
-                id="passGuests">1</b></span><span><small>DATE</small><b data-config="dateShort">[Wedding
-                Date]</b></span><span><small>STATUS</small><b id="passStatus">Accepted</b></span></div>
-          <p class="pass-venue" data-config="venue">[Venue Name]</p><button class="button button-light" id="rsvpAgain"
-            type="button">Edit RSVP</button>
-        </div>
-      </div>
-    </section>
-
-    <footer><span data-config="couple">[Names]</span><i>♥</i><span data-config="dateShort">[Date]</span></footer>
+    <footer>
+      LAYLA & YOUSSEF · OCTOBER 14, 2026
+    </footer>
   </main>
 
-  <button class="sound-toggle" id="soundToggle" type="button" aria-pressed="false" aria-label="Turn ambient sound on">♪
-    <span>SOUND OFF</span></button>
-  <audio id="bgMusic" src="src/music.mp3" loop></audio>
+  <script>
+    // Opening envelope trigger
+    document.getElementById('openTrigger').addEventListener('click', () => {
+      document.getElementById('opening').classList.add('opened');
+      const website = document.getElementById('website');
+      website.removeAttribute('aria-hidden');
+      website.classList.add('is-visible');
+    });
 
-  <script src="config.js"></script>
-  <script src="script.js"></script>
+    // Countdown Timer logic
+    const weddingDate = new Date('2026-10-14T17:00:00').getTime();
+    setInterval(() => {
+      const now = Date.now();
+      const diff = weddingDate - now;
+      if (diff > 0) {
+        document.getElementById('days').textContent = Math.floor(diff / 86400000);
+        document.getElementById('hours').textContent = Math.floor((diff / 3600000) % 24);
+        document.getElementById('minutes').textContent = Math.floor((diff / 60000) % 60);
+        document.getElementById('seconds').textContent = Math.floor((diff / 1000) % 60);
+      }
+    }, 1000);
+  </script>
 </body>
-
 </html>
