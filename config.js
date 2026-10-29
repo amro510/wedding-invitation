@@ -15,11 +15,9 @@ const config = {
   heroInvitationLine: "request the pleasure of your company",
   closingMessage: "Your love and presence mean everything to us.",
 
-// Temporary Placeholder Images for Testing
   heroImage: "https://picsum.photos/1200/800",
   cardImage: "https://picsum.photos/400/400",
 
-  // Photo Gallery Placeholders
   gallery: [
     "https://picsum.photos/600/600?random=1",
     "https://picsum.photos/600/600?random=2",
@@ -38,6 +36,6 @@ const config = {
   ],
 
   maxGuests: 4,
-  submissionEndpoint: "", // Paste your Google Apps Script URL here
+  submissionEndpoint: "",
   isGuestbookPublic: true
 };
